@@ -1,14 +1,16 @@
+package com.example.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import com.example.model.Member;
 
 public class loginDao {
 	
 	private String dburl = "jdbc:mysql://localhost:3306/userdb";
 	private String dbuname = "root";
-	private String dbpassword = "Papanut20*";
+	private String dbpassword = "villageit@";
 	private String dbdriver = "com.mysql.cj.jdbc.Driver";
 	
 	public void loadDriver(String dbDriver) {

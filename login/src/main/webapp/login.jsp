@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ page import="com.example.servlet.loginCheck" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/style.css">
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style.css">
 </head>
 <body>
 
@@ -23,21 +23,30 @@
     }
 %>
 
-	<div class="login-container">
-		<h2>Login</h2>
-		<form action="loginCheck" method="post">
-			<label for="uname">Username:</label> <input type="text" id="uname"
-				name="uname" required><br> <br> <label
-				for="password">Password:</label> <input type="password"
-				id="password" name="password" required><br> <br>
+<%-- Display error message if available --%>
+<%
+    String errorMessage = (String) request.getAttribute("errorMessage");
+    if (errorMessage != null) {
+%>
+    <div class="error-message">
+        <%= errorMessage %>
+    </div>
+    <%
+    }
+%>
 
-			<button type="submit">Login</button>
-		</form>
+<div class="login-container">
+    <h2>Login</h2>
+    <form action="loginCheck" method="post">
+        <label for="uname">Username:</label>
+        <input type="text" id="uname" name="uname" required>
+        <br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+        <button type="submit">Login</button>
+    </form>
+</div>
 
-		<!-- Error message placeholder (if needed) -->
-		<div class="error-message">
-			<%=request.getAttribute("errorMessage") != null ? request.getAttribute("errorMessage") : ""%>
-		</div>
-	</div>
 </body>
 </html>

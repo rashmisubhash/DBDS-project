@@ -1,3 +1,4 @@
+package com.example.model;
 public class Member {
 	private String uname, password, email, first_name, last_name, userType;
 
