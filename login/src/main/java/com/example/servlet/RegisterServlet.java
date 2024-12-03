@@ -14,13 +14,13 @@ import com.example.model.Member;
  * Servlet implementation class Register
  */
 @WebServlet("/Register")
-public class Register extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Register() {
+	public RegisterServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -56,7 +56,7 @@ public class Register extends HttpServlet {
 		
 		if ("Data Entered Successfully".equals(result)) {
 	        request.getSession().setAttribute("successMessage", "Registration completed successfully!");
-	        response.sendRedirect("login.jsp"); // Redirect to login page after successful registration
+	        response.sendRedirect("login.jsp"); 
 	    } else {
 	        request.setAttribute("errorMessage", "Registration failed. Please try again.");
 	        request.getRequestDispatcher("memberRegister.jsp").forward(request, response);

@@ -10,17 +10,27 @@ import java.io.IOException;
 
 import com.example.dao.CustomerQuestionsDao;
 
-@WebServlet("/replyQuestion")
+//@WebServlet("/replyQuestion")
 public class ReplyQuestionServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int questionId = Integer.parseInt(request.getParameter("questionId"));
-        String reply = request.getParameter("reply");
+        try {
+            int questionId = Integer.parseInt(request.getParameter("questionId"));
+            String reply = request.getParameter("reply");
 
-        CustomerQuestionsDao dao = new CustomerQuestionsDao();
-        dao.addReply(questionId, reply);
+            CustomerQuestionsDao dao = new CustomerQuestionsDao();
+            dao.addReply(questionId, reply);
 
-        response.sendRedirect("repDashboard.jsp"); // Redirect back to the representative's dashboard
+            response.sendRedirect("repDashboard.jsp");
+        } catch (NumberFormatException e) {
+            request.setAttribute("errorMessage", "Invalid Question ID.");
+            request.getRequestDispatcher("errorPage.jsp").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("errorMessage", "An error occurred while processing the request.");
+            request.getRequestDispatcher("errorPage.jsp").forward(request, response);
+        }
     }
 }

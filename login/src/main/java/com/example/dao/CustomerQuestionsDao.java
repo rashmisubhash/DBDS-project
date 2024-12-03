@@ -102,4 +102,29 @@ public class CustomerQuestionsDao {
         }
         return questions;
     }
+    
+    public List<CustomerQuestions> searchQuestions(String keyword) {
+        String query = "SELECT * FROM questions WHERE question LIKE ?";
+        List<CustomerQuestions> questionsList = new ArrayList<>();
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, "%" + keyword + "%");
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    CustomerQuestions question = new CustomerQuestions();
+                    question.setCustomerId(rs.getString("customer_id"));
+                    question.setQuestion(rs.getString("question"));
+                    question.setReply(rs.getString("answer")); 
+                    question.setCreatedAt(rs.getTimestamp("created_at"));
+                    questionsList.add(question);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return questionsList; 
+    }
+
 }

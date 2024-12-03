@@ -35,29 +35,20 @@
   </servlet-mapping>
   
 <servlet>
-    <servlet-name>loginCheck</servlet-name>
-    <servlet-class>com.example.servlet.loginCheck</servlet-class>
+    <servlet-name>LoginCheckServlet</servlet-name>
+    <servlet-class>com.example.servlet.LoginCheckServlet</servlet-class>
 </servlet>
 <servlet-mapping>
-    <servlet-name>loginCheck</servlet-name>
+    <servlet-name>LoginCheckServlet</servlet-name>
     <url-pattern>/loginCheck</url-pattern>
-</servlet-mapping>
+</servlet-mapping> 
 
 <servlet>
-    <servlet-name>Register</servlet-name>
-    <servlet-class>com.example.servlet.Register</servlet-class>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.example.servlet.LogoutServlet</servlet-class>
 </servlet>
 <servlet-mapping>
-    <servlet-name>Register</servlet-name>
-    <url-pattern>/Register</url-pattern>
-</servlet-mapping>
-
-<servlet>
-    <servlet-name>logout</servlet-name>
-    <servlet-class>com.example.servlet.logout</servlet-class>
-</servlet>
-<servlet-mapping>
-    <servlet-name>logout</servlet-name>
+    <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
 </servlet-mapping>
 <servlet>

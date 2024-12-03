@@ -44,6 +44,7 @@ public class RegisterDao {
 			ps.setString(3, member.getEmail());
 			ps.setNString(4, member.getFirstName());
 			ps.setNString(5, member.getLastName());
+			ps.setString(6, member.getUserType());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

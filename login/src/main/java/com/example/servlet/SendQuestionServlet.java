@@ -9,7 +9,7 @@ import com.example.dao.CustomerQuestionsDao; // Ensure this is imported
 
 import java.io.IOException;
 
-@WebServlet("/sendQuestion")
+//@WebServlet("/sendQuestion")
 public class SendQuestionServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
